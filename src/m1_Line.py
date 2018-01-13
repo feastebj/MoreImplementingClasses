@@ -3,8 +3,8 @@ A simple   Line   class.
 NOTE: This is NOT rosegraphics -- it is your OWN Line class.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Benjamin Feaster.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import m1t_test_Line as m1t
@@ -15,7 +15,7 @@ import m1t_test_Line as m1t
 ########################################################################
 
 # ----------------------------------------------------------------------
-# TODO: 2. With your instructor, READ THE INSTRUCTIONS
+# DONE: 2. With your instructor, READ THE INSTRUCTIONS
 #   in file  m0_INSTRUCTIONS.txt, asking questions as needed.
 #   Once you understand the instructions, mark this TO DO as DONE.
 #
@@ -216,8 +216,10 @@ class Line(object):
           :type start: Point
           :type end:   Point
         """
+        self.start = start.clone()
+        self.end = end.clone()
         # --------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -325,8 +327,9 @@ class Line(object):
         Type hints:
           :rtype: Line
         """
+        return Line(self.start, self.end)
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -358,8 +361,9 @@ class Line(object):
             line1.reverse()
             print(line1 == line2)    # Should now print: True
         """
+        return Line(self.end, self.start)
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -394,6 +398,15 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+
+        if (self.end.x - self.start.x) == 0:
+            return math.inf
+        slope = (self.end.y - self.start.y) / (self.end.x - self.start.x)
+        if slope == 0:
+            return 0.0
+        else:
+            return slope
+            
         # --------------------------------------------------------------
         # TODO: 6.
         #   a. READ the above specification, including the Example.
